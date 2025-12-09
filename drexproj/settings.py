@@ -93,7 +93,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'drexapp', 'static'),
 ]
-
+ALLOWED_HOSTS = ['your-app-name.onrender.com']
+DEBUG = False
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
