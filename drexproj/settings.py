@@ -5,9 +5,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-CHANGE-THIS-IN-PRODUCTION'
 
-DEBUG = True
+DEBUG = False   # IMPORTANT for Render
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['your-app-name.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -25,23 +25,23 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # WhiteNoise ENABLED
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
 
 ROOT_URLCONF = 'drexproj.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],    # We are not using global templates
-        'APP_DIRS': True,   # Enables templates inside each app
+        'DIRS': [],    
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -56,7 +56,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'drexproj.wsgi.application'
 
 
-# Database (SQLite default)
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -89,16 +89,19 @@ USE_I18N = True
 USE_TZ = True
 
 
-# STATIC FILES (Images, CSS, JS)
+# STATIC FILES (CSS, JS, IMAGES)
 STATIC_URL = '/static/'
 
+# Where your local static files are located
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'drexapp', 'static'),
 ]
-ALLOWED_HOSTS = ['your-app-name.onrender.com']
-DEBUG = False
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Where static files will be collected for Render
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# WhiteNoise static file compression
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
-# Default primary key
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
