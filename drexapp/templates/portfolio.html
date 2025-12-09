@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-
+    <title>My Portfolio - Drexelica Bern Reyes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,13 +14,32 @@
             text-align: center;
         }
 
-        .container {
+        /* Navigation bar styling */
+        nav {
+            background-color: #007bff;
+            padding: 15px 0;
+        }
+
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        /* Card container */
+        .card {
             max-width: 900px;
-            margin: auto;
+            margin: 40px auto;
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 40px;
+            padding: 20px 40px;
+            border-radius: 15px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
@@ -36,6 +54,7 @@
 
         h1 {
             margin: 10px 0;
+            color: #007bff;
         }
 
         p {
@@ -57,15 +76,20 @@
         }
     </style>
 </head>
-
 <body>
 
-    <div class="container">
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="{% url 'portfolio' %}">Home</a>
+        <a href="{% url 'skills' %}">Skills</a>
+        <a href="{% url 'about' %}">About Me</a>
+    </nav>
+
+    <!-- Portfolio Card -->
+    <div class="card">
 
         <!-- PROFILE PICTURE -->
-        <img src="{% static 'me.jpg' %}" 
-        class="profile-img">
-
+        <img src="{% static 'me.jpg' %}" class="profile-img">
 
         <h1>Drexelica Bern Reyes</h1>
         <p>Future Software Engineer | Web Developer | Designer</p>
@@ -73,30 +97,11 @@
         <div class="section">
             <h2>About Me</h2>
             <p>
-                Hi! I'm Drexelica. I love coding, designing, and creating  
-                projects that help people. This is my simple portfolio made  
-                with Django and HTML.
+               Hi! I’m Drexelica Bern Reyes, a 19-year-old enthusiastic explorer of the tech world. I’m passionate about 
+               discovering new ideas, learning new skills, and taking on diverse projects. Over time, I’ve worked on many different projects, 
+               building a variety of portfolios that showcase my creativity and dedication. I love challenges and constantly 
+               strive to improve myself, whether it’s through coding, designing, or exploring innovative solutions.
             </p>
-        </div>
-
-        <div class="section">
-            <h2>Skills</h2>
-            <ul>
-                <li>Python & Django</li>
-                <li>HTML / CSS</li>
-                <li>JavaScript</li>
-                <li>UI / UX Design</li>
-                <li>Problem Solving</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Projects</h2>
-            <ul>
-                <li>Login system in Django</li>
-                <li>Portfolio website</li>
-                <li>Simple Task Manager</li>
-            </ul>
         </div>
 
     </div>
